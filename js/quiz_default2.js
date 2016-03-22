@@ -1,4 +1,4 @@
-(function(){
+;(function(){
     var $container = $("#container"),
         pagesize = {
             width: $(window).width(),
@@ -6,6 +6,12 @@
         };
     var START = 1,MOVE = 2,END = 3,THRESHOLD = 30,
         QUIZ_DATA;
+    var COLOR = {
+        primary: "#157EFB" 
+    };
+    var options = {
+        waittime: 200 
+    };
     //container translateY 
     var conTranslatey = 0;
     function run(){
@@ -53,7 +59,7 @@
             var result = [],que,ans,
                 len = QUIZ_DATA.questions.length;
             //create cover
-            CoverModule.setCoverData({title: QUIZ_DATA.title,img_src: QUIZ_DATA.img_src});
+            CoverModule.setCoverData({title: QUIZ_DATA.title,img_src: QUIZ_DATA.img_src,desc: QUIZ_DATA.description});
             //create questions and answers
             for(var i=0;i<len;i++){
                 que = createQuestionWidget(i); 
@@ -551,8 +557,9 @@
             return isMove; 
         }
         function setCoverData(data){
-            $cover_page.find(".info-wrap h1").html(data.title);
-            $cover_page.find(".cover-image img").attr(data.img_src);
+            $cover_image.html('<img src="'+data.img_src+'"/>');
+            $title.html(data.title);
+            $base_info.html(data.desc);
         }
         return {
             run: run,
@@ -567,6 +574,10 @@
     var PlayModule = function(){
         var index = 0,
             result = [];
+        var ANSWERTYPE = {
+            image: 1,
+            text: 0
+        };
         function run(){
             $("body").on("click",function(e){
                 var target = e.target || e.srcElement,
@@ -579,7 +590,18 @@
             });
         } 
         function answerHandler($target){
-            var data_id = $target.attr("data-id");
+            var data_id = $target.attr("data-id"),
+                data_type = $target.attr("data-type");
+            if(data_type == ANSWERTYPE.image){
+                $target.find(".content-i-wrap").css({
+                    "background-color": COLOR.primary,
+                    "color": "#fff"
+                }); 
+            }else{
+                $target.siblings("li").css({
+                    opacity: 0.3 
+                }); 
+            }
             result[index+1] = QUIZ_DATA.questions[index].answers[data_id].results;
             if(index >= QUIZ_DATA.questions.length-1){
                 //show result
@@ -595,10 +617,12 @@
             transition = "all 300ms cubic-bezier(0.32, 0.96, 0.72, 1.01)";
             transform = "translate3d(0,"+(-pagesize.height*(index+1))+"px,0)";
             ProgressModule.resetBar(index,QUIZ_DATA.questions.length);
-            
-            UtilModule.setTransition($container,transition);
-            UtilModule.setTransform($container,transform);
-            console.log("index:"+index); 
+            ;(function(transition,transform){ 
+                setTimeout(function(){
+                    UtilModule.setTransition($container,transition);
+                    UtilModule.setTransform($container,transform);
+                },options.waittime);
+            })(transition,transform);
             //preload image
             LazyLoad.execute(index+2);
         }
@@ -623,7 +647,6 @@
     **/
     var LazyLoad = function(){
         function execute(index){
-            console.log("lazy index: "+index); 
             var $questions = InitModule.getQuestions();
             if(index >= $questions.length){
                 return; 

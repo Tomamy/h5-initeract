@@ -1,4 +1,4 @@
-(function(){
+;(function(){
     var $container = $("#container"),
         pagesize = {
             width: $(window).width(),
@@ -6,6 +6,16 @@
         };
     var START = 1,MOVE = 2,END = 3,THRESHOLD = 30,
         QUIZ_DATA;
+    var COLOR = {
+        primary: "#157EFB" 
+    };
+    var options = {
+        waittime: 200 
+    };
+    var tpl = {
+        correct: '<div class="notice-wrap correct"><div class="icon-wrap sprite sprite-correct"></div></div>',
+        wrong: '<div class="notice-wrap wrong"><div class="icon-wrap sprite sprite-wrong"></div></div>'
+    };
     //container translateY 
     var conTranslatey = 0;
     function run(){
@@ -53,7 +63,7 @@
             var result = [],que,ans,
                 len = QUIZ_DATA.questions.length;
             //create cover
-            CoverModule.setCoverData({title: QUIZ_DATA.title,img_src: QUIZ_DATA.img_src});
+            CoverModule.setCoverData({title: QUIZ_DATA.title,img_src: QUIZ_DATA.img_src,desc: QUIZ_DATA.description});
             //create questions and answers
             for(var i=0;i<len;i++){
                 que = createQuestionWidget(i); 
@@ -135,6 +145,7 @@
             for(var i = 0;i<answers.length;i++){
                 data.caption = answers[i].caption; 
                 data.id = i;
+                data.correct = answers[i].results.is_correct;
                 data.liClass = (i+1)%2 == 1 ? answerVals.padding_right : answerVals.padding_left;
                 
                 if(data.isExistsImg){   
@@ -551,8 +562,10 @@
             return isMove; 
         }
         function setCoverData(data){
-            $cover_page.find(".info-wrap h1").html(data.title);
-            $cover_page.find(".cover-image img").attr(data.img_src);
+            $cover_image.html('<img src="'+data.img_src+'"/>');
+            $title.html(data.title);
+            $base_info.html(data.desc);
+
         }
         return {
             run: run,
@@ -566,7 +579,13 @@
     **/
     var PlayModule = function(){
         var index = 0,
-            result = [];
+            result = [],
+            correct_count = 0;
+        var ANSWERTYPE = {
+            image: 1,
+            text: 0
+        };
+        var $result_page = $("#result-page");
         function run(){
             $("body").on("click",function(e){
                 var target = e.target || e.srcElement,
@@ -579,8 +598,15 @@
             });
         } 
         function answerHandler($target){
-            var data_id = $target.attr("data-id");
-            result[index+1] = QUIZ_DATA.questions[index].answers[data_id].results;
+            var data_id = $target.attr("data-id"),
+                data_type = $target.attr("data-type"),
+                data_correct = $target.attr("data-correct");
+            if(data_correct == 1){
+                $target.children("div").append(tpl.correct);  
+                correct_count++;
+            }else {
+                $target.children("div").append(tpl.wrong);  
+            }
             if(index >= QUIZ_DATA.questions.length-1){
                 //show result
                 showResult();
@@ -595,10 +621,12 @@
             transition = "all 300ms cubic-bezier(0.32, 0.96, 0.72, 1.01)";
             transform = "translate3d(0,"+(-pagesize.height*(index+1))+"px,0)";
             ProgressModule.resetBar(index,QUIZ_DATA.questions.length);
-            
-            UtilModule.setTransition($container,transition);
-            UtilModule.setTransform($container,transform);
-            console.log("index:"+index); 
+            ;(function(transition,transform){ 
+                setTimeout(function(){
+                    UtilModule.setTransition($container,transition);
+                    UtilModule.setTransform($container,transform);
+                },options.waittime);
+            })(transition,transform);
             //preload image
             LazyLoad.execute(index+2);
         }
@@ -608,10 +636,28 @@
             transition = "all 300ms cubic-bezier(0.32, 0.96, 0.72, 1.01)";
             transform = "translate3d(0,"+(-pagesize.height*(index+1))+"px,0)";
             ProgressModule.exits();
+            ;(function(transition,transform){ 
+                setTimeout(function(){
+                    UtilModule.setTransition($container,transition);
+                    UtilModule.setTransform($container,transform);
+                },options.waittime);
+            })(transition,transform);
+            var result,val; 
+            for(val in QUIZ_DATA.results){
+                if(correct_count >= QUIZ_DATA.results[val].condition){
+                    result = QUIZ_DATA.results[val]; 
+                    break;
+                } 
+            } 
+            //set data to html
+            var desc = JTE.clear().assign("num",correct_count).execute(result.description);
+            $result_page.find(".desc-wrap").html(desc); 
             
-            UtilModule.setTransition($container,transition);
-            UtilModule.setTransform($container,transform);
-
+            var $content_wrap = $result_page.find(".content-wrap");
+            $content_wrap.css({
+                top: "50%",
+                "margin-top": (-$content_wrap.height()/2) + "px"
+            });
         }
         return {
             run: run 
@@ -623,7 +669,6 @@
     **/
     var LazyLoad = function(){
         function execute(index){
-            console.log("lazy index: "+index); 
             var $questions = InitModule.getQuestions();
             if(index >= $questions.length){
                 return; 
@@ -645,7 +690,7 @@
         }    
     }();
 
-    window.WttQuiz = {
+    window.WttTrivia = {
         run: run 
     }
 })(window);

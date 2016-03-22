@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Quiz</title>
+    <title>Trivia</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="Keywords" content="微头条" />
     <meta property="og:type" content="web" />
@@ -25,7 +25,7 @@
     <ul id="container">
         <li class="cover">
             <div class="cover-page full-page" id="cover-page">
-                <div class="cover-image"><img src="images/c.jpg"></div> 
+                <div class="cover-image"></div> 
                 <div class="cap-wrap">
                     <div class="pic-wrap">
                         <div class="l-triangle">
@@ -40,9 +40,10 @@
                         </div>  
                     </div>
                     <div class="info-wrap">
-                        <h1>从睡姿中揭露出你到底是一个怎样的人？</h1>
-                        <div class="base-info">
-                            <div class="author-wrap">
+                        <h1></h1>
+                        <div class="base-info" style="width: autho;">
+                            <!--小编信息与阅读数-->
+                            <!--<div class="author-wrap">
                                 <div></div>    
                                 <div>
                                     <p class="name">微头条编辑</p>
@@ -53,6 +54,7 @@
                             <div class="visit-wrap text-right">
                                 <div class="visit sprite sprite-visit">9000</div>
                             </div>
+                            -->
                         </div>
                     </div>
                     <div class="start-wrap text-center">
@@ -65,24 +67,7 @@
         <li class="result">
             <div class="result-page full-page" id="result-page">
                 <div class="content-wrap">
-                    <div class="header-wrap">
-                        <div class="img-wrap"></div>
-                        <div class="pic-wrap">
-                           <div class="b-square">
-                                <div class="t-triangle"></div> 
-                                <div class="mascot-wrap">
-                                    <img src="images/mascot.png"/> 
-                                </div>
-                                <div class="text-wrap">
-                                    <div class="title">计算结果：</div> 
-                                    <h1>洞察力强</h1>
-                                </div>
-                           </div> 
-                        </div>
-                    </div>
-                    <div class="desc-wrap">
-                        你有超人的洞察力！你的组织能力强，你的方向 感强你的格言可能是：别惹恼我们的每件事，能 指引我们增进对自我的了解。 
-                    </div>
+                    <div class="desc-wrap"></div>
                     <div class="result-btn">
                         <div class="btn bg-primary">更多测试</div> 
                     </div>
@@ -94,7 +79,7 @@
         </li>
     </ul>
     <script type="text/template" id="data-tpl">
-        {"cate_id":"1","title":"你最适合去哪个国家“血拼”？","img_src":"images/c.jpg","imgWidth":640,"imgHeight":409,"description":"购物是旅行的一大乐趣！你最适合去哪个国家shopping呢？快来测测看吧！","share":{"title":"我是<%={result}.title%>，<%={quiz}.title%>","description":"我是<%={result}.title%>，<%={quiz}.description%>"},"questions":[{"caption":"你的特长是？","img_src":"images/q1.jpg","imgWidth":720,"imgHeight":480,"layout":{"cols":"1","img":"left"},"answers":[{"imgWidth":0,"imgHeight":0,"caption":"读书","results":{"1":"0","2":"1","3":"0","4":"0","5":"2","6":"0","7":"0"}},{"imgWidth":0,"imgHeight":0,"caption":"购物购物购物购物购物购物购物购物","results":{"1":"0","2":"2","3":"1","4":"0","5":"0","6":"1","7":"0"}},{"imgWidth":0,"imgHeight":0,"caption":"读书读书读书读书读书读书读书读书","results":{"1":"0","2":"1","3":"0","4":"0","5":"2","6":"0","7":"0"}}]},{"caption":"下班后喝点什么，你会选择？","img_src":"images/q2.jpg","imgWidth":690,"imgHeight":460,"layout":{"cols":"2","img":"top"},"answers":[{"img_src":"images/qa1.jpg","imgWidth":320,"imgHeight":205,"caption":"冰啤","results":{"1":"1","2":"0","3":"2","4":"0","5":"1","6":"0","7":"0"}},{"img_src":"images/qa2.jpg","imgWidth":320,"imgHeight":226,"caption":"白酒","results":{"1":"1","2":"0","3":"0","4":"2","5":"0","6":"0","7":"0"}},{"img_src":"images/qa3.jpg","imgWidth":320,"imgHeight":211,"caption":"Mai-Tai","results":{"1":"0","2":"1","3":"0","4":"0","5":"0","6":"2","7":"0"}},{"img_src":"images/qa4.jpg","imgWidth":320,"imgHeight":193,"caption":"鸡尾酒","results":{"1":"0","2":"1","3":"0","4":"0","5":"0","6":"1","7":"1"}},{"img_src":"images/qa5.jpg","imgWidth":320,"imgHeight":242,"caption":"茶","results":{"1":"0","2":"2","3":"0","4":"1","5":"0","6":"0","7":"0"}},{"img_src":"images/qa6.jpg","imgWidth":320,"imgHeight":194,"caption":"威士忌","results":{"1":"0","2":"0","3":"1","4":"0","5":"1","6":"0","7":"0"}}]},{"caption":"睡觉前喝点什么呢？","img_src":"images/q3.jpg","imgWidth":690,"imgHeight":460,"layout":{"cols":"2","img":"top"},"answers":[{"img_src":"images/qa5.jpg","imgWidth":320,"imgHeight":242,"caption":"茶","results":{"1":"0","2":"2","3":"0","4":"1","5":"0","6":"0","7":"0"}},{"img_src":"images/qa6.jpg","imgWidth":320,"imgHeight":194,"caption":"威士忌","results":{"1":"0","2":"0","3":"1","4":"0","5":"1","6":"0","7":"0"}}]},{"caption":"你的兴趣爱好是？","img_src":"images/q4.jpg","imgWidth":720,"imgHeight":480,"layout":{"cols":"1","img":"left"},"answers":[{"imgWidth":0,"imgHeight":0,"caption":"读书","results":{"1":"0","2":"1","3":"0","4":"0","5":"2","6":"0","7":"0"}},{"imgWidth":0,"imgHeight":0,"caption":"购物","results":{"1":"0","2":"2","3":"1","4":"0","5":"0","6":"1","7":"0"}},{"imgWidth":0,"imgHeight":0,"caption":"享受音乐","results":{"1":"2","2":"0","3":"0","4":"0","5":"1","6":"1","7":"0"}},{"imgWidth":0,"imgHeight":0,"caption":"城市漫步","results":{"1":"2","2":"0","3":"1","4":"0","5":"0","6":"1","7":"1"}},{"imgWidth":0,"imgHeight":0,"caption":"喝酒跳舞","results":{"1":"0","2":"0","3":"2","4":"0","5":"0","6":"0","7":"1"}},{"imgWidth":0,"imgHeight":0,"caption":"参观历史古迹","results":{"1":"0","2":"0","3":"0","4":"1","5":"2","6":"0","7":"1"}}]},{"caption":"你的兴趣爱好是？","img_src":"images/q5.jpg","imgWidth":720,"imgHeight":480,"layout":{"cols":"1","img":"left"},"answers":[{"imgWidth":0,"imgHeight":0,"caption":"读书","results":{"1":"0","2":"1","3":"0","4":"0","5":"2","6":"0","7":"0"}},{"imgWidth":0,"imgHeight":0,"caption":"购物","results":{"1":"0","2":"2","3":"1","4":"0","5":"0","6":"1","7":"0"}}]},{"caption":"你的喜欢什么色？","img_src":"images/q6.jpg","imgWidth":720,"imgHeight":480,"layout":{"cols":"1","img":"left"},"answers":[{"imgWidth":0,"imgHeight":0,"caption":"读书","results":{"1":"0","2":"1","3":"0","4":"0","5":"2","6":"0","7":"0"}},{"imgWidth":0,"imgHeight":0,"caption":"购物","results":{"1":"0","2":"2","3":"1","4":"0","5":"0","6":"1","7":"0"}}]},{"caption":"下面做的最多的是？","img_src":"images/q7.jpg","imgWidth":720,"imgHeight":480,"layout":{"cols":"1","img":"left"},"answers":[{"imgWidth":0,"imgHeight":0,"caption":"读书","results":{"1":"0","2":"1","3":"0","4":"0","5":"2","6":"0","7":"0"}},{"imgWidth":0,"imgHeight":0,"caption":"购物","results":{"1":"0","2":"2","3":"1","4":"0","5":"0","6":"1","7":"0"}}]}],"ctrl":{"ret_button":{"link":"/app/link/redirect?from=quiz-413&goto=https%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzAwODMyMDIyMg%3D%3D%26mid%3D402749551%26idx%3D1%26sn%3D917df8e3a051051783ca7d3677e8cd20%26scene%3D0","html":"<div class=\"btn bg-primary\" id=\"restart\" style=\"background: url(//imgcdn.lerays.com/activity/2016/03/16/424c15bba922cf9901e525aefcff40c9.png) no-repeat center center;background-size:100% auto;height:50px;width:60%;\"></div>"}},"tpl":"default","flow_control":"1","key":"af936c38f1b2b061f264eb7e020966b6754d75a3796f12ae05649a7a3f1b0cb14d5451314f4449324e4467794e513d3d"}
+       {"img_src":"images/c.jpg","imgWidth":"640","imgHeight":"460","title":"元宵答题大作战，马上有红包！","description":"准备好了吗？全部答对可获得红包大奖哦~","cate_id":"2","share":{"title":"","description":""},"results":[{"condition":4,"description":"全答对了！！元宵节快乐！！红包是你的了！"},{"condition":1,"description":"你答对了<%={num}%>题，再接再厉哦！"},{"condition":0,"description":"一题也不会？你需要补充元宵节常识啦~"}],"questions":[{"img_src":"images/q1.jpg","imgWidth":"720","imgHeight":"518","caption":"元宵节又称什么节日？","layout":{"cols":"3","img":"top"},"answers":[{"img_src":"images/qa1.jpg","imgWidth":320,"imgHeight":205,"caption":"汤圆节","results":{"is_correct":0}},{"img_src":"images/qa2.jpg","imgWidth":320,"imgHeight":226,"caption":"情人节","results":{"is_correct":0}},{"img_src":"images/qa3.jpg","imgWidth":320,"imgHeight":211,"caption":"上元节","results":{"is_correct":1}}]},{"img_src":"images/q2.jpg","imgWidth":"720","imgHeight":"518","caption":"元宵节的节日美食是？","layout":{"cols":"3","img":"top"},"answers":[{"img_src":"","imgWidth":"100%","imgHeight":"100%","caption":"粽子","results":{"is_correct":0}},{"img_src":"","imgWidth":"100%","imgHeight":"100%","caption":"汤圆","results":{"is_correct":1}},{"img_src":"","imgWidth":"100%","imgHeight":"100%","caption":"月饼","results":{"is_correct":0}}]},{"img_src":"images/q3.jpg","imgWidth":"720","imgHeight":"518","caption":"以下哪个不是元宵节的习俗？","layout":{"cols":"3","img":"top"},"answers":[{"img_src":"","imgWidth":"100%","imgHeight":"100%","caption":"闹花灯","results":{"is_correct":0}},{"img_src":"","imgWidth":"100%","imgHeight":"100%","caption":"猜灯谜","results":{"is_correct":0}},{"img_src":"","imgWidth":"100%","imgHeight":"100%","caption":"送苹果","results":{"is_correct":1}}]},{"img_src":"images/q4.jpg","imgWidth":"720","imgHeight":"518","caption":"你认为，以下哪则民间传说与元宵节的起源有关？","layout":{"cols":"3","img":"top"},"answers":[{"img_src":"","imgWidth":"100%","imgHeight":"100%","caption":"牛郎织女的故事 ","results":{"is_correct":0}},{"img_src":"","imgWidth":"100%","imgHeight":"100%","caption":"东方朔巧帮汉宫女和家人团聚","results":{"is_correct":1}},{"img_src":"","imgWidth":"100%","imgHeight":"100%","caption":"介子推的传说","results":{"is_correct":0}}]}],"tpl":"default","flow_control":"1"}  
     </script>
     <script type="text/template" id="question-tpl">
         <li class="question">
@@ -110,13 +95,13 @@
         </li> 
     </script>
     <script type="text/template" id="answer-tpl">
-        <li data-id="<%={data}.id%>" class="answer-item <%={data}.liClass%>">
+        <li data-id="<%={data}.id%>" data-type="<%= {data}.isExistsImg ? 1 : 0 %>" data-correct="<%= {data}.correct %>" class="answer-item <%={data}.liClass%>">
             <div class="<%={data}.contentClass%>">
                 <%if({data}.isExistsImg){%>
                    <div class="img-wrap">
                         <div class="img-box" style="<%={data}.img_style%>" data-src="<%={data}.img_src%>"></div> 
                    </div>
-                   <div class="img-text text-center"><%={data}.caption%></div>
+                   <%if({data}.caption){%><div class="img-text text-center"><%={data}.caption%></div><%}%>
                 <%}else {%>
                    <div class="t-text text-center"><%={data}.caption%></div>
                 <%}%>
@@ -127,7 +112,7 @@
     <script type="text/javascript" src="js/JTE.js"></script>
     <script type="text/javascript" src="js/trivia_default2.js"></script>
     <script>
-        WttQuiz.run();
+        WttTrivia.run();
     </script>
 </body>
 </html>
